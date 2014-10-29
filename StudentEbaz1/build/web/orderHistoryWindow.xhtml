@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"> 
+    <h:body>
+
+        <ui:composition template="./Template.xhtml">
+         <!--               
+        <ui:define name="metadata">
+            <f:event listener="#{loginSession.checkLogin}" type="preRenderView"/>  
+        </ui:define>
+          -->  
+        <ui:define name="content">
+               <div class="centralAreaStyle" align="center">
+        <p>Order History</p>
+        <h:form> 
+            
+            <h:dataTable border="2"  value="#{viewOrderHistoryPCB.orders}" bgcolor="white" var="order" class="largeTableCells"  width="9">
+
+            <h:column>
+               <f:facet name="header">#{"Select Order"}</f:facet>               
+               <h:selectBooleanCheckbox value="#{viewOrderHistoryPCB.checked[order.orderId]}"/>     
+            </h:column>
+                 
+            <h:column>
+               <f:facet name="header">#{"Id"}</f:facet>
+                #{order.orderId}      
+            </h:column>
+
+            <h:column>
+               <f:facet name="header">#{"Date"}</f:facet>
+                #{order.orderDate}      
+            </h:column>
+            
+             <h:column headerClass="columnHeader" >
+               <f:facet name="header">#{"Price"}</f:facet>
+               #{order.totalPrice}
+            </h:column>
+            
+
+         </h:dataTable>
+           
+            
+            <p class="buttonRow">
+                <h:commandButton id="viewdetails" value="View Details" action="#{viewOrderHistoryPCB.getOrderDetail}"/> 
+                <h:commandButton id="close" value="Close" action="index"/> 
+
+            </p>
+     </h:form>
+     </div> 
+            </ui:define>
+
+            <ui:define name="sidebar">
+                <ui:include src="/sideBar.xhtml"/>
+            </ui:define>
+
+        </ui:composition>
+
+    </h:body>
+</html>
+

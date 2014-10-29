@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./Template.xhtml">
+
+            <ui:define name="content">
+                <div class="centralAreaStyle" align="left">
+                    
+           <p>
+             <h3><h:outputText value="#{loginBeanReq.getLoginSession().getGreeting()}" style="color: orange"/></h3>
+            
+           </p>
+       
+             <h:form> 
+                <p><h:commandLink id="button" value="Retrive Cart items" action="retriveCart"/></p>
+                 <p><h:commandLink id="index" value="Go to online shopping" action="index"/></p>
+            </h:form>
+                </div>
+            </ui:define>
+
+            <ui:define name="sidebar">
+                <ui:include src="/sideBar.xhtml"/>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+   <body>
+
+        <ui:composition template="./Template.xhtml">
+
+            
+            <ui:define name="sidebar">
+                <ui:include src="/sideBar.xhtml"/>
+            </ui:define>
+
+            <ui:define name="content">
+              <div class="centralAreaStyle" align="center">
+                <p>Shipping and Billing Information</p>
+              
+                  <h:form> 
+                    <div id="address" width="80%" class="standardComponent">
+                      
+                    <div id="leftcolumn">
+                        <h:outputText value="Shipping Address"  />
+                            <h:panelGrid border="1" columns="2" width="90%"> 
+                               <h:outputText value="Name"/>
+                               <h:panelGroup>
+                                  <h:inputText id="shipFirstName" value="#{checkoutPCB.custProf.firstName}"
+                                           required="true" requiredMessage="This is a required field." />
+                                  <h:message for="shipFirstName"  class="errorMsg"/>   
+                               </h:panelGroup>
+                               
+                               <h:outputText value="Address"/>
+                               <h:panelGroup>
+                                   <h:inputText id="shipStreet1" value="#{checkoutPCB.shippingAddress.street1}"
+                                           required="true" requiredMessage="This is a required field." />
+                                   <h:message for="shipStreet1"  class="errorMsg"/>
+                               </h:panelGroup>
+                               <h:outputText value="City"/>
+                               
+                               <h:panelGroup>
+                                    <h:inputText id="shipCity" value="#{checkoutPCB.shippingAddress.city}"
+                                           required="true" requiredMessage="This is a required field." />
+                                    <h:message for="shipCity"  class="errorMsg"/>  
+                               </h:panelGroup>
+                               
+                               <h:outputText value="State"/>
+                               
+                               <h:panelGroup>
+                                   <h:inputText id="shipState" value="#{checkoutPCB.shippingAddress.state}"
+                                           required="true" requiredMessage="This is a required field." />
+                                   <h:message for="shipState"  class="errorMsg"/>
+                               </h:panelGroup>
+                               <h:outputText value="Zip"/>
+                               
+                               <h:panelGroup>
+                                   <h:inputText id="shipZip" value="#{checkoutPCB.shippingAddress.zip}"
+                                           required="true" requiredMessage="This is a required field." />
+                                   <h:message for="shipZip"  class="errorMsg"/>
+                               </h:panelGroup>
+                          </h:panelGrid>
+                     </div>
+                            <div id="rightcolumn">
+                            
+                               <h:outputText value="Billing Address" />
+                                    <h:panelGrid border="1" columns="2" width="90%"> 
+                                       <h:outputText value="Name"/>
+                                        <h:panelGroup>
+                                           <h:inputText id="billFirstName" value="#{checkoutPCB.custProf.firstName}" 
+                                           required="true" requiredMessage="This is a required field." />
+                                           <h:message for="billFirstName"  class="errorMsg"/>
+                                        </h:panelGroup>
+
+                                       <h:outputText value="Address"/>
+                                       
+                                        <h:panelGroup>
+                                            <h:inputText id="billStreet1" value="#{checkoutPCB.billingAddress.street1}"
+                                              required="true" requiredMessage="This is a required field." />
+                                            <h:message for="billStreet1"  class="errorMsg"/>
+                                        </h:panelGroup>
+
+                                       
+                                       <h:outputText value="City"/>
+                                        <h:panelGroup>
+                                           <h:inputText id="billCity" value="#{checkoutPCB.billingAddress.city}"
+                                             required="true" requiredMessage="This is a required field." />
+                                           <h:message for="billCity"  class="errorMsg"/>
+                                        </h:panelGroup>
+
+                                       <h:outputText value="State"/>
+                                       
+                                       <h:panelGroup>
+                                           <h:inputText id="billState" value="#{checkoutPCB.billingAddress.state}"
+                                             required="true" requiredMessage="This is a required field." />
+                                           <h:message for="billState"  class="errorMsg"/>
+                                       </h:panelGroup>
+
+                                       <h:outputText value="Zip"/>
+                                       <h:panelGroup>
+                                           <h:inputText id="billZip" value="#{checkoutPCB.billingAddress.zip}"
+                                             required="true" requiredMessage="This is a required field." />
+                                           <h:message for="billZip"  class="errorMsg"/>
+                                       </h:panelGroup>
+                                 </h:panelGrid>
+                         </div>
+                        <div class="clear"></div>
+                   </div>
+                   <div id="checkboxesAddress" class="standardComponent"  style="margin-top:25px;" >
+                          
+                        <h:selectBooleanCheckbox value="#{checkoutPCB.newShippingAddress}" /> New Shipping Address?
+                        <span style="padding-left: 20px"><h:selectBooleanCheckbox value="#{checkoutPCB.billingAddSameAsShippingAdd}" /> Billing Address same as shipping</span>
+                    </div>
+                    <div id="shippingMethod" class="standardComponent" style="margin-top:25px;">
+                        <h:outputText value="Shipping Method" />
+                      <div id="shippingoptions" > 
+                        <h:selectOneRadio value="#{checkoutPCB.shippingMethod}">
+                        
+                            <f:selectItem itemValue="Pigeon-carrier Ground" itemLabel="Pigeon-carrier Ground"/>
+                            <f:selectItem itemValue="Pigeon-carrier Air" itemLabel="Pigeon-carrier Air"/>
+                            <f:selectItem itemValue="Pigeon-carrier Overnight" itemLabel="Pigeon-carrier Overnight"/>
+                           
+                        </h:selectOneRadio>
+                          </div>
+                    </div>
+                       <p class="buttonRow" align="center">
+                            <h:commandButton value="Select Shipping Address" action="shippingAddresses"/>
+                            <h:commandButton value="Proceed to Checkout" action="#{checkoutPCB.proceedToPaymentWindow('checkoutwindow')}"/>          
+                            <h:commandButton value="Back to Cart" action="cartitem"/> 
+               
+                       </p>
+                      
+                      </h:form>   
+                
+              </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body> 
+</html>

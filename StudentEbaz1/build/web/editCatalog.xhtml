@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./Template.xhtml">
+
+            <ui:define name="metadata">
+               
+            </ui:define>
+
+            <ui:define name="sidebar">
+                <ui:include src="/sideBar.xhtml"/>
+            </ui:define>
+
+            <ui:define name="content">
+                       <div class="centralAreaStyle" align="center">
+            
+                    <p >Edit Catalog Name</p>
+                    <div id="box">
+                <h:form>
+                 <h:panelGrid  columns="2" class="tableCells">   
+                     <h:outputText  value="Catalog Name"  />
+                     <h:inputText id="qua" value="#{manageProductsPCB.catalogSelected}" 
+				size="15" required="true">
+				
+                           
+                      </h:inputText>	
+                    
+                </h:panelGrid>
+                    <p class="buttonRow">
+             <h:commandButton value="Save" action="#{manageProductsPCB.saveEditedCatalogName}"/>
+             <h:commandButton value="Cancel" action="manageCatalogWindow"/>
+             </p>
+                    
+          </h:form>
+          </div>
+        </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

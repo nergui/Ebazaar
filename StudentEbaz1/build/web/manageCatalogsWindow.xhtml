@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./Template.xhtml">
+
+
+            <ui:define name="sidebar">
+                  <ui:include src="/sideBar.xhtml"/>
+            </ui:define>
+
+            <ui:define name="content">
+                  <div class="centralAreaStyle" align="center">
+                            
+             <p> Maintain Catalog Types</p>
+             
+               <h:messages styleClass="errorMsg"/>
+               
+             <h:form> 
+            
+            <h:dataTable border="2"  headerClass="catalogHeader" columnClasses="firstCol,secondCol" 
+                         value="#{manageProductsPCB.catalogs}"  
+                         styleClass="catalog-table" class="smallTableCells" bgcolor="white" var="cat">
+                     
+                <h:column>
+               <f:facet name="header">#{"Select Catalog"}</f:facet>
+                  
+               <h:selectBooleanCheckbox  value="#{manageProductsPCB.checked[cat]}" />
+             
+            </h:column>
+                 
+                <h:column>
+                <f:facet name="header" >#{"Catalog Name"}</f:facet>
+                #{cat}
+           
+            </h:column>
+
+         </h:dataTable>
+            
+               
+            
+            <p class="buttonRow">
+                <h:commandButton value="Add" action="addCatalog"/>
+                <h:commandButton value="Edit" action="#{manageProductsPCB.editCatalogName}"/> 
+                <h:commandButton value="Delete" action="#{manageProductsPCB.deleteCatalog}"/> 
+                <h:commandButton value="Back" action="index"/> 
+            </p>
+     </h:form>
+     </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

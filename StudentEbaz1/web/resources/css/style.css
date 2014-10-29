@@ -1,0 +1,106 @@
+#body {
+  width: 80%;
+  height:80%;
+  background-color: #faf8a7;
+}
+#heading {
+   
+   padding: 10px;
+   font-size: 80px;
+   font-style: italic;
+   font-weight: bold;
+   background: #d7860d; /*#dddddd;*/
+   color:#faf8a7;
+   border: 1px solid darkGray;
+   margin: 0px;
+   text-align: center;
+}
+
+#content {
+   
+   border: 1px solid darkGray;
+   height:18.5em;
+   width:74%;
+   /*text-align:center;*/
+   font-size: 26px;
+   background: #faf8a7; /*#eeeeee;*/
+   float: right; /*left;*/
+}
+
+#sidebar {
+  
+   border: 1px solid darkGray;
+   height:30em;
+   width:23.5%;
+   background: #fefeef;
+   padding-left: 15px;
+ 
+}
+#greet{
+   padding-top: 25px;
+   padding-left: 10px;
+   padding-bottom: 15px;
+   font-size: 12px;
+   font-family: sans-serif;
+   font-weight: bold;
+   text-align: left;
+   color:green;
+}
+
+/* for two-column tables */
+#leftcolumn {
+    width:48%;
+    float:left;
+}
+#rightcolumn {
+    width:48%;
+    float:left;
+}
+
+.clear {
+    clear:both;
+}
+.centralAreaStyle {
+    /*padding-left: 15px;*/
+    padding-top: 35px;
+    margin-top: 15px;
+    margin-left: 15px;
+    width:100%;
+}
+.buttonRow {
+    margin-top: 25px;
+}
+.standardComponent {
+   font-size:16px; 
+}
+
+.bigLabel {
+    font-size:26px;
+}
+
+.smallTableCells {
+    text-align:center;
+    width:40%;
+    font-size:16px;
+}
+
+.tableCells {
+    text-align:left;
+    width:55%;
+    font-size:16px;
+}
+
+.largeTableCells {
+    text-align:right;
+    width:65%;
+    font-size:16px;
+}
+
+.errorMsg {
+    font-size:18px;
+    color: red;
+}
+.column{
+    float: left; /*right;*/
+ }
+

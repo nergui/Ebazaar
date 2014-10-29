@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./Template.xhtml">
+
+         <ui:define name="content">
+            <div class="centralAreaStyle" align="center">
+
+                <h:form>
+                    <h:panelGrid cellpadding="10">   
+                     Quantity Desired:
+                    <h:inputText id="qua" value="#{bsPCB.quantityRequested}" validator="#{bsPCB.validateQuantity}" 
+				size="4" label="Quantity Desired" >              
+                     </h:inputText>	
+                     <h:message for="qua"  class="errorMsg"/>   
+                </h:panelGrid>
+                 
+                    <p class="buttonRow">
+             <h:commandButton value="Submit" action="cartitem" actionListener="#{bsPCB.addQuantity()}"> </h:commandButton>
+             </p>
+          </h:form>
+        </div>
+            </ui:define>
+
+            <ui:define name="sidebar">
+              <ui:include src="/sideBar.xhtml"/>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+
+

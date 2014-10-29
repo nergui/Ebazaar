@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./Template.xhtml">
+
+            <ui:define name="content">
+                 <div class="centralAreaStyle" align="center">
+             <p>Shipping Addresses on File</p>
+           <h:form> 
+            
+            <h:dataTable border="2"  value="#{checkoutPCB.addressList}" bgcolor="white" var="address" class="largeTableCells"  width="9">
+                     
+             <h:column>
+                 
+             <f:facet name="header">#{"Select Address"}</f:facet>
+                  
+                <h:selectBooleanCheckbox value="#{checkoutPCB.checkedAddresses[checkoutPCB.getCheckedKey(address)]}"/>
+             
+            </h:column>
+                 
+            <h:column>
+               <f:facet name="header">#{"Street"}</f:facet>
+                #{address.street1}
+           
+            </h:column>
+                
+            <h:column>
+               <f:facet name="header">#{"Street"}</f:facet>
+                #{address.street2}
+           
+            </h:column>
+
+            <h:column headerClass="columnHeader" >
+                
+               <f:facet name="header">#{"City"}</f:facet>
+               
+                  #{address.city}
+
+            </h:column>
+            
+             <h:column headerClass="columnHeader" >
+               <f:facet name="header">#{"State"}</f:facet>
+               #{address.state}
+            </h:column>
+            
+            <h:column headerClass="columnHeader" >
+               <f:facet name="header">#{"Zip"}</f:facet>
+               #{address.zip}
+            </h:column>
+            
+         </h:dataTable>
+           
+            <p class="buttonRow"> 
+                
+                <h:commandButton value="Select" action="#{checkoutPCB.selectAddress()}"/>
+                <h:commandButton value="Cancel" action="checkoutwindow"/> 
+ 
+            </p>
+     </h:form>
+             
+     </div>
+            </ui:define>
+
+            <ui:define name="sidebar">
+                <ui:include src="/sideBar.xhtml"/>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

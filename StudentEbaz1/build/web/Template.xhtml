@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+   <h:head>
+      <title>E-Bazaar</title>
+      <h:outputStylesheet library="css" name="style.css"/>
+   </h:head>
+   
+   <h:body>   
+     <div id="body">
+            <ui:insert name="metadata"/>
+            <div id="heading">
+                <h:graphicImage library="images" name="BASKET.png" height="50" />
+               #{"E-Bazaar"}
+            </div> 
+            <div id="sidebar" class="column">
+               <ui:insert name="sidebar"/>
+            </div>
+            <div id="content" class="column">
+              <ui:insert name="content"/>
+            </div>
+       
+                
+         </div>
+      <ui:debug/>
+      
+   </h:body>
+</html>

@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./Template.xhtml">
+
+            <ui:define name="metadata">
+               
+            </ui:define>
+
+            <ui:define name="sidebar">
+               <ui:include src="/sideBar.xhtml"/>
+            </ui:define>
+
+            <ui:define name="content">
+               <div class="centralAreaStyle" align="center">
+                        <p>Final Order</p>
+                        
+                        <h:form> 
+         <h:dataTable border="2"  value="#{checkoutPCB.getCartItems()}" bgcolor="white" var="cartItem" class="largeTableCells"  width="9">
+                     
+            
+       
+            <h:column>
+               <f:facet name="header">#{"Item name"}</f:facet>
+                #{cartItem.productName}
+           
+            </h:column>
+
+            <h:column headerClass="columnHeader" >
+               <f:facet name="header">#{"Quantity"}</f:facet>
+
+                 #{cartItem.quantity}
+            </h:column>
+            
+             <h:column headerClass="columnHeader" >
+               <f:facet name="header">#{"Unit Price"}</f:facet>
+                #{cartItem.getItemUnitPrice()}
+            </h:column>
+            
+            <h:column headerClass="columnHeader" >
+               <f:facet name="header">#{"Total cost"}</f:facet>
+               #{cartItem.computeTotalPrice()}
+            </h:column>
+          
+         </h:dataTable>
+                            
+              <p class="buttonRow" align="center">
+                   <h:commandButton value="Submit Order" action="#{checkoutPCB.submitOrder('finalOrderWindow')}"/> 
+                    <h:commandButton value="Cancel" action="cartitem"/>
+                </p>
+              </h:form> 
+                        <h:messages class="errorMsg"/>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

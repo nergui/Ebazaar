@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./Template.xhtml">
+
+            <ui:define name="content">
+                <div class="centralAreaStyle" align="center">
+        <p> Cart Items</p>
+        <h:form> 
+            
+            <h:dataTable id="cartItemsTable" border="2"  value="#{bsPCB.cartItems}" bgcolor="white" 
+                  var="item" class="largeTableCells"  width="9" >
+                     
+             <h:column>
+               <f:facet name="header">#{"Select"}</f:facet>    
+              <h:selectBooleanCheckbox value="#{bsPCB.checked[item.productName]}" />
+                 
+            </h:column>
+                 
+            <h:column>
+               <f:facet name="header">#{"Item"}</f:facet>
+                #{item.productName}
+           
+            </h:column>
+
+            <h:column headerClass="columnHeader" >
+               <f:facet name="header">#{"Quantity"}</f:facet>
+                   <h:inputText id="quantity" value="#{item.quantity}" rendered="#{bsPCB.checkedForEdit[item.productName]}"  size="2"/>
+                 
+              <h:outputText value="#{item.quantity}" rendered="#{not bsPCB.checkedForEdit[item.productName]}"/>
+
+            </h:column>
+            
+             <h:column headerClass="columnHeader" >
+               <f:facet name="header">#{"Unit Price"}</f:facet>
+               #{item.getItemUnitPrice()}
+            </h:column>
+            
+            <h:column headerClass="columnHeader" >
+               <f:facet name="header">#{"Total Cost"}</f:facet>
+               #{item.computeTotalPrice()}
+            </h:column>
+            <h:column>
+                  <f:facet name="header">#{"Edit Quantity"}</f:facet>
+                  
+                <h:commandLink value="edit" action="#{bsPCB.makeItemEditable(item)}" /> 
+            
+               </h:column> 
+                
+                
+            <h:column headerClass="columnHeader" >
+            <f:facet name="header">#{"Save Change"}</f:facet>
+                <h:commandLink value="save" action="#{bsPCB.saveEditedItem(item, item.quantity)}"/> 
+             
+            </h:column>
+         </h:dataTable>
+                <h:messages class="errorMsg"/>  
+            
+          
+            <p class="buttonRow">
+                <h:commandButton value="Delete Selected" action="#{bsPCB.deleteSelectedItems()}"/>
+                <h:commandButton value="Continue Shopping" action="index"/> 
+                <h:commandButton id="checkout" value="Checkout" action="#{loginSession.checkLogin()}">
+                    <f:param name ="url" value="checkoutwindow.xhtml"/>
+                    <f:param name ="requirement" value="CHECKOUT" />
+                </h:commandButton> 
+                <h:commandButton  value="Save Cart" action="#{loginSession.checkLogin()}">
+                     <f:param name="url" value="cartitem.xhtml" /> 
+                     <f:param name ="requirement" value="SAVE_CART" />
+                </h:commandButton>
+                   
+            </p>
+     </h:form>
+     </div>
+            </ui:define>
+
+            <ui:define name="sidebar">
+               <ui:include src="/sideBar.xhtml"/>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+
+
+
+

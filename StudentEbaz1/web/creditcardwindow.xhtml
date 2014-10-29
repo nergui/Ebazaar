@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./Template.xhtml">
+
+            <ui:define name="metadata">
+                
+            </ui:define>
+
+            <ui:define name="sidebar">
+                 <ui:include src="/sideBar.xhtml"/>
+            </ui:define>
+
+            <ui:define name="content">
+                 <div class="centralAreaStyle" align="center">
+                         <p>Payment Method</p>
+                     <h:form> 
+                 <div id="paymentMethod" class="standardComponent">
+                           
+                                   <h:panelGrid border="1" columns="2" bgcolor="white"> 
+                                       <h:outputText value="Name on Card"/>
+                                       
+                                       <h:panelGroup>
+                                       <h:inputText id="nameOnCard" value="#{checkoutPCB.card.nameOnCard}"/>
+                                       <h:message for="nameOnCard"  class="errorMsg"/>
+                                       </h:panelGroup>
+                                       
+                                       <h:outputText value="Card Number"/>
+                                       <h:panelGroup>
+                                           <h:inputText id="cardNum" value="#{checkoutPCB.card.cardNum}"/>
+                                           <h:message for="cardNum"  class="errorMsg"/>
+                                       </h:panelGroup>
+                                       <h:outputText value="Card Type"/>
+                                       
+                                       <h:panelGroup>
+                                           <h:selectOneMenu id="cardType" value="#{checkoutPCB.card.cardType}" >
+                                                    <f:selectItem itemValue="MasterCard" itemLabel="MasterCard"/>
+                                                    <f:selectItem itemValue="Visa" itemLabel="Visa" />
+                                                    <f:selectItem itemValue="Discover" itemLabel="Discover"/>
+                                           </h:selectOneMenu>                                                                             
+                                           <h:message for="cardType"  class="errorMsg"/>
+                                       </h:panelGroup>
+                                       
+                                       <h:outputText value="Expiration Date"/>
+                                       
+                                       
+                                       <h:panelGroup>
+                                           <h:inputText id="expDate" value="#{checkoutPCB.card.expirationDate}"/>
+                                           <h:message for="expDate"  class="errorMsg"/>
+                                       </h:panelGroup>
+
+                       
+                                 </h:panelGrid>
+                     <h:messages class="errorMsg"/>
+                             <p class="buttonRow" align="center">
+                            <h:commandButton value="Proceed to Checkout" action="#{checkoutPCB.proceedToTermsConditions('creditcardwindow')}"/> 
+                            <h:commandButton value="Back to Cart" action="cartitem"/>
+                            </p>
+                           </div>
+                          </h:form>
+                         
+                      </div>
+              
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

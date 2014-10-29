@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./Template.xhtml">
+
+            <ui:define name="metadata">
+               
+            </ui:define>
+
+            <ui:define name="sidebar">
+                   <ui:include src="/sideBar.xhtml"/>
+            </ui:define>
+
+            <ui:define name="content">
+                  <div class="centralAreaStyle" align="center">
+                         <p>Edit Product</p>
+                     <h:form> 
+                 <div id="paymentMethod">
+                           
+                                   <h:panelGrid border="1" columns="2" class="tableCells"> 
+                                       <h:outputText value="Product Name"/>
+                                       <h:inputText value="#{manageProductsPCB.productToEdit.productName}"/>
+
+                                       <h:outputText value="Catalog"/>
+                                       
+                                       <h:selectOneMenu value="#{manageProductsPCB.catalogSelected}" disabled="#{manageProductsPCB.disabled}">
+                                                
+                                                <f:selectItems value="#{manageProductsPCB.catalogs}"  var="cat" itemValue="#{cat}" itemLabel="#{cat}"/>
+                             
+                                            </h:selectOneMenu>
+                                       <h:outputText value="Price per Unit"/>
+                                       <h:inputText value="#{manageProductsPCB.productToEdit.unitPrice}"/>
+                                       
+                                        <h:outputText value="Mfg.Date"/>
+                                       <h:inputText value="#{manageProductsPCB.productToEdit.mfgDate}"/>
+                                       
+                                        <h:outputText value="Quantity"/>
+                                       <h:inputText value="#{manageProductsPCB.productToEdit.quantityAvail}"/>
+
+                       
+                                 </h:panelGrid>
+                             <p class="buttonRow" align="center">
+                            <h:commandButton value="Save" action="#{manageProductsPCB.saveEditedProduct}"/> 
+                            <h:commandButton value="Close" action="manageProductsWindow"/>
+                            </p>
+                           </div>
+                          </h:form>
+                      </div>
+              
+              
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

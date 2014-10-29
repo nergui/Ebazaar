@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Menu</title>
+    </h:head>
+    <body>
+        <ui:composition>  
+            <div id="greet">
+            <h:outputText value="#{loginSession.getGreeting()}" rendered="#{loginSession.isLoggedIn}"/>
+         
+            </div>
+         <h:form> 
+            
+             <h:panelGrid columns="2"  cellpadding="12">
+                   
+                   <h:commandLink  action="login" rendered="#{!loginSession.isLoggedIn}">
+                       <h:graphicImage library="images" name="LOGIN.png"/>
+                    </h:commandLink>
+                 
+                  <h:commandLink value="Log In"  action="login" rendered="#{!loginSession.isLoggedIn}"/>
+                      
+                  <h:commandLink  id="logone" action="#{loginSession.logout()}" rendered="#{loginSession.isLoggedIn}">
+                      <h:graphicImage library="images" name="EXIT.PNG" rendered="#{loginSession.isLoggedIn}"/>
+                   </h:commandLink>
+                  
+                    <h:commandLink id="logtwo" value="Log Out" action="#{loginSession.logout()}" rendered="#{loginSession.isLoggedIn}"/>
+   
+                    <h:commandLink action="index">
+            
+                       <h:graphicImage library="images" name="BROWSE.png"/>
+                       
+                   </h:commandLink>
+                   
+                   <h:commandLink  value="Browse Catalogs" action="index"/> 
+                   
+                   <h:commandLink action="#{loginSession.checkLogin()}">           
+                       <h:graphicImage library="images" name="ORDER.png"/>
+                       <f:param name="url" value="orderHistoryWindow.xhtml" /> 
+                        <f:param name ="requirement" value="VIEW_ORDER_HISTORY" />
+                   </h:commandLink>
+                   <h:commandLink  value="Order History" action="#{loginSession.checkLogin()}">
+                        <f:param name="url" value="orderHistoryWindow.xhtml" /> 
+                        <f:param name ="requirement" value="VIEW_ORDER_HISTORY" />
+                   </h:commandLink>
+                   
+                   <h:commandLink action="#{loginSession.checkLogin()}">        
+                       <h:graphicImage library="images" name="CART.png"/>
+                       <f:param name="url" value="cartitem.xhtml" /> 
+                        <f:param name ="requirement" value="RETRIEVE_SAVED_CART" />
+                   </h:commandLink>
+                   
+                   <h:commandLink  value="Retrieve Saved Cart" action="#{loginSession.checkLogin()}">
+                         <f:param name="url" value="cartitem.xhtml" />             
+                         <f:param name ="requirement" value="RETRIEVE_SAVED_CART" />
+                    </h:commandLink>
+                   
+                    <h:commandLink action="#{loginSession.checkLogin()}">
+                       <h:graphicImage library="images" name="CATALOG.png"/>
+                       <f:param name="url" value="manageCatalogsWindow.xhtml" />             
+                       <f:param name ="requirement" value="MANAGE_CATALOGS" />
+                   </h:commandLink>
+                   <h:commandLink  value="Maintain Catalogs" action="#{loginSession.checkLogin()}">
+                        <f:param name="url" value="manageCatalogsWindow.xhtml" />             
+                        <f:param name ="requirement" value="MANAGE_CATALOGS" />
+                   </h:commandLink>
+                   
+                   
+                    <h:commandLink action="#{loginSession.checkLogin()}">           
+                       <h:graphicImage library="images" name="Product.png"/>
+                       <f:param name="url" value="manageProductsWindow.xhtml" />             
+                       <f:param name ="requirement" value="MANAGE_PRODUCTS" />
+                   </h:commandLink>
+                   <h:commandLink  value="Maintain Products" action="#{loginSession.checkLogin()}">
+                       <f:param name="url" value="manageProductsWindow.xhtml" />             
+                       <f:param name ="requirement" value="MANAGE_PRODUCTS" />
+                   </h:commandLink>
+                   
+             </h:panelGrid>
+         </h:form>	    
+      </ui:composition> 
+    </body>
+</html>
+
